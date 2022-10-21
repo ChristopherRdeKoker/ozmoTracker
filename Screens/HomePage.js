@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity, Text, View, Button } from "react-native";
 import CostButton from "./components/CostButton";
 import SalesButton from "./components/SalesButton";
-import InventoryButton from "./components/Inventory";
+import InventoryButton from "./components/InventoryButton";
 
 export default function HomePage() {
   return (

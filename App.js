@@ -1,4 +1,4 @@
-import HomePage from "./Main/HomePage";
+import HomePage from "./Screens/HomePage";
 
 export default function App() {
   return <HomePage />;

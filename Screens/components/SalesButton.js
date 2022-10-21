@@ -1,10 +1,10 @@
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function InventoryButton() {
+export default function SalesButton() {
   return (
     <TouchableOpacity>
       <View style={styles.button}>
-        <Text style={styles.textButton}>Inventory</Text>
+        <Text style={styles.textButton}>Sales</Text>
       </View>
     </TouchableOpacity>
   );
@@ -12,8 +12,8 @@ export default function InventoryButton() {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#FFDB58",
-    borderRadius: 38,
+    backgroundColor: "#228B22",
+    borderRadius: 30,
     height: 100,
     width: 250,
     borderColor: "black",

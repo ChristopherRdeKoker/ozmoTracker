@@ -1,10 +1,10 @@
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function SalesButton() {
+export default function CostButton() {
   return (
     <TouchableOpacity>
       <View style={styles.button}>
-        <Text style={styles.textButton}>Sales</Text>
+        <Text style={styles.textButton}>Cost</Text>
       </View>
     </TouchableOpacity>
   );
@@ -12,15 +12,14 @@ export default function SalesButton() {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#228B22",
-    borderRadius: 38,
+    backgroundColor: "#f01d71",
+    borderRadius: 30,
     height: 100,
     width: 250,
     borderColor: "black",
     borderWidth: 4,
     justifyContent: "center",
     alignContent: "center",
-    marginTop: 30,
   },
   textButton: {
     textAlign: "center",
