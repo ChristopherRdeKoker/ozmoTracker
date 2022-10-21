@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function CostButton() {
+export default function CostButton({ navigation }) {
   return (
     <TouchableOpacity>
       <View style={styles.button}>

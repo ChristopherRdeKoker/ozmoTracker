@@ -9,7 +9,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={SecondScreen} options={{ title: "Welcome" }}></Stack.Screen>
+        <Stack.Screen
+          name="Home"
+          component={HomePage}
+          options={{ title: "Welcome", headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen name="Second" component={SecondScreen} options={{ title: "Expenses" }}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

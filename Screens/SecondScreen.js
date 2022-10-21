@@ -1,6 +1,6 @@
-import { StyleSheet, TouchableOpacity, Text, View, Button } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function SecondScreen({ navigation }) {
+export default function SecondScreen() {
   return (
     <View>
       <Text>Hey Ho second screen</Text>

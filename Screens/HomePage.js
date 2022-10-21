@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#2e8bc0",
     alignItems: "center",
     justifyContent: "flex-start",
-    // paddingTop: 100,
+    paddingTop: 80,
   },
   dummyText: {
     borderWidth: 4,
