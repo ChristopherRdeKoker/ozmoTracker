@@ -1,5 +1,16 @@
 import HomePage from "./Screens/HomePage";
+import SecondScreen from "./Screens/SecondScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return <HomePage />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={SecondScreen} options={{ title: "Welcome" }}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }

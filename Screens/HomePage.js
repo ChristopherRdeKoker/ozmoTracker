@@ -3,7 +3,7 @@ import CostButton from "./components/CostButton";
 import SalesButton from "./components/SalesButton";
 import InventoryButton from "./components/InventoryButton";
 
-export default function HomePage() {
+export default function HomePage({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.dummyText}>Ozmo Tracker</Text>
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#2e8bc0",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: 100,
+    // paddingTop: 100,
   },
   dummyText: {
     borderWidth: 4,
