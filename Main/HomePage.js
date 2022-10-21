@@ -1,9 +1,15 @@
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function HomePage() {
   return (
     <View style={styles.container}>
       <Text style={styles.dummyText}>Ozmo Tracker</Text>
+      <View style={{ margin: 10 }}>
+        <Button title="Cost" />
+      </View>
+      <View style={{ margin: 10 }}>
+        <Button title="Sales" />
+      </View>
     </View>
   );
 }
