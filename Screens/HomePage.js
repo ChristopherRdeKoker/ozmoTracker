@@ -1,14 +1,23 @@
-import { StyleSheet, TouchableOpacity, Text, View, Button } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import CostButton from "./components/CostButton";
 import SalesButton from "./components/SalesButton";
 import InventoryButton from "./components/InventoryButton";
 
 export default function HomePage({ navigation }) {
+  const clickMeSecond = () => {
+    navigation.navigate("Second");
+  };
+
+  const clickMeThird = () => {
+    navigation.navigate("Third");
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.dummyText}>Ozmo Tracker</Text>
-      <CostButton />
-      <SalesButton />
+      <View>
+        <CostButton click={clickMeSecond} />
+      </View>
+      <SalesButton click={clickMeThird} />
       <InventoryButton />
     </View>
   );
@@ -27,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#89CFF0",
     padding: 22,
     width: 350,
-    borderRadius: 30,
+    borderRadius: 20,
     fontSize: 25,
     marginVertical: 20,
     marginBottom: 80,

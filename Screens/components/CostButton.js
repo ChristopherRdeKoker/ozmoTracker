@@ -1,8 +1,8 @@
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function CostButton({ navigation }) {
+export default function CostButton(props) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.click}>
       <View style={styles.button}>
         <Text style={styles.textButton}>Cost</Text>
       </View>
