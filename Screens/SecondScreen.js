@@ -1,30 +1,47 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
 
 export default function SecondScreen() {
   return (
-    <View>
-      <Text>Hey Ho second screen</Text>
+    <View style={styles.container}>
+      <View style={styles.formDetailsContainer}>
+        <Text style={styles.formGreet}>Hi ho</Text>
+        <TextInput> dsada</TextInput>
+      </View>
+      <View style={styles.renderedList}></View>
     </View>
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#2e8bc0",
-//     alignItems: "center",
-//     justifyContent: "flex-start",
-//     // paddingTop: 100,
-//   },
-//   dummyText: {
-//     borderWidth: 4,
-//     backgroundColor: "#89CFF0",
-//     padding: 22,
-//     width: 350,
-//     borderRadius: 30,
-//     fontSize: 25,
-//     marginVertical: 20,
-//     marginBottom: 80,
-//     textAlign: "center",
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#F33A6A",
+    borderWidth: 2,
+    borderColor: "#ccc",
+    height: "100%",
+    alignItems: "center",
+
+    justifyContent: "flex-start",
+  },
+  formDetailsContainer: {
+    height: 350,
+    width: "90%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    backgroundColor: "#FFC0CB",
+    borderColor: "#28282B",
+    borderWidth: 4,
+    marginVertical: 10,
+  },
+  formGreet: {
+    fontWeight: "bold",
+    fontSize: 25,
+    paddingTop: 15,
+  },
+  renderedList: {
+    borderWidth: 4,
+    minHeight: 200,
+    minWidth: "90%",
+    backgroundColor: "#89CFF0",
+    borderColor: "#28282B",
+  },
+});
