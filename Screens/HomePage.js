@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
 import CostButton from "./components/HomeComponents/CostButton";
 import SalesButton from "./components/HomeComponents/SalesButton";
 import InventoryButton from "./components/HomeComponents/InventoryButton";
+import { CostDATA } from "../DATA";
+import { SalesData } from "../DATA";
 
 export default function HomePage({ navigation }) {
+  ////Navigation
   const clickMeSecond = () => {
     navigation.navigate("Second");
   };
@@ -11,11 +15,14 @@ export default function HomePage({ navigation }) {
   const clickMeThird = () => {
     navigation.navigate("Third");
   };
+  ///// DataState
+
+  /////////////////////////////////////////////////
   return (
     <View style={styles.container}>
       <Text style={styles.dummyText}>Ozmo Tracker</Text>
       <View>
-        <CostButton click={clickMeSecond} />
+        <CostButton click={clickMeSecond} Parentdata={CostDATA} />
       </View>
       <SalesButton click={clickMeThird} />
       <InventoryButton />
