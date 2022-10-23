@@ -1,7 +1,7 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
-import CostButton from "./components/CostButton";
-import SalesButton from "./components/SalesButton";
-import InventoryButton from "./components/InventoryButton";
+import { StyleSheet, Text, View } from "react-native";
+import CostButton from "./components/HomeComponents/CostButton";
+import SalesButton from "./components/HomeComponents/SalesButton";
+import InventoryButton from "./components/HomeComponents/InventoryButton";
 
 export default function HomePage({ navigation }) {
   const clickMeSecond = () => {

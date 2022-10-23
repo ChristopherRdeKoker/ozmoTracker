@@ -7,7 +7,7 @@ export default function SecondScreen() {
         <Text style={styles.formGreet}>Hi ho</Text>
         <TextInput> dsada</TextInput>
       </View>
-      <View style={styles.renderedList}></View>
+      <View style={styles.renderedListContainer}></View>
     </View>
   );
 }
@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     height: "100%",
     alignItems: "center",
+    paddingTop: 50,
 
     justifyContent: "flex-start",
   },
   formDetailsContainer: {
-    height: 350,
+    height: 200,
     width: "90%",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -31,17 +32,20 @@ const styles = StyleSheet.create({
     borderColor: "#28282B",
     borderWidth: 4,
     marginVertical: 10,
+    borderRadius: 10,
+    paddingTop: 40,
   },
   formGreet: {
     fontWeight: "bold",
     fontSize: 25,
     paddingTop: 15,
   },
-  renderedList: {
+  renderedListContainer: {
     borderWidth: 4,
     minHeight: 200,
     minWidth: "90%",
     backgroundColor: "#89CFF0",
     borderColor: "#28282B",
+    borderRadius: 10,
   },
 });
