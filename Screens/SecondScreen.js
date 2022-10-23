@@ -1,11 +1,21 @@
-import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
+import React from "react";
+import { StyleSheet, TouchableOpacity, Text, View, Modal } from "react-native";
 import AddMeButton from "./components/CostComponents/AddMeButton";
+import { useState } from "react";
 
 export default function SecondScreen() {
+  const [modalVisible, setModalVisible] = React.useState(false);
+
+  const onOpenModal = () => setModalVisible(true);
   return (
     <View style={styles.container}>
       <View style={styles.addMeButtonContainer}>
-        <AddMeButton />
+        <Modal animationType="slide" visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
+          <View>
+            <Text> Hey Modal it up in da house!</Text>
+          </View>
+        </Modal>
+        <AddMeButton onOpen={onOpenModal} />
       </View>
       <View style={styles.renderedListContainer}></View>
     </View>
