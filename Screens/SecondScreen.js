@@ -1,11 +1,11 @@
 import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
+import AddMeButton from "./components/CostComponents/AddMeButton";
 
 export default function SecondScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.formDetailsContainer}>
-        <Text style={styles.formGreet}>Hi ho</Text>
-        <TextInput> dsada</TextInput>
+      <View style={styles.addMeButtonContainer}>
+        <AddMeButton />
       </View>
       <View style={styles.renderedListContainer}></View>
     </View>
@@ -23,29 +23,26 @@ const styles = StyleSheet.create({
 
     justifyContent: "flex-start",
   },
-  formDetailsContainer: {
-    height: 200,
-    width: "90%",
+  addMeButtonContainer: {
+    height: 150,
+    width: "70%",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     backgroundColor: "#FFC0CB",
     borderColor: "#28282B",
     borderWidth: 4,
     marginVertical: 10,
-    borderRadius: 10,
-    paddingTop: 40,
+    borderRadius: 150,
+    // paddingTop: 40,
+    marginBottom: 50,
   },
-  formGreet: {
-    fontWeight: "bold",
-    fontSize: 25,
-    paddingTop: 15,
-  },
+
   renderedListContainer: {
     borderWidth: 4,
-    minHeight: 200,
+    minHeight: 300,
     minWidth: "90%",
     backgroundColor: "#89CFF0",
     borderColor: "#28282B",
-    borderRadius: 10,
+    borderRadius: 25,
   },
 });
