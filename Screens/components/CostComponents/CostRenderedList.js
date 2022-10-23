@@ -1,10 +1,11 @@
 import { View, Text } from "react-native";
-
+import List from "./List";
 export default function CostRenderedList(props) {
   const { data } = props;
-  //date logic:
-  let currentMonth = new Date().getMonth() + 1;
-  console.log(currentMonth);
+
+  // const currentMonth = new Date().getMonth() + 1;
+  // const currentYear = new Date().getFullYear();
+  //////////////////////////////////////////////////////
 
   return (
     <View>
@@ -12,7 +13,7 @@ export default function CostRenderedList(props) {
       <Text>Testing List 123</Text>
 
       <Text>Testing List 123</Text>
-      {}
+      <List />
     </View>
   );
 }

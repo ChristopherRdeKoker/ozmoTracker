@@ -3,8 +3,6 @@ import { useState } from "react";
 import CostButton from "./components/HomeComponents/CostButton";
 import SalesButton from "./components/HomeComponents/SalesButton";
 import InventoryButton from "./components/HomeComponents/InventoryButton";
-import { CostDATA } from "../DATA";
-import { SalesData } from "../DATA";
 
 export default function HomePage({ navigation }) {
   ////Navigation
@@ -22,7 +20,7 @@ export default function HomePage({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.dummyText}>Ozmo Tracker</Text>
       <View>
-        <CostButton click={clickMeSecond} Parentdata={CostDATA} />
+        <CostButton click={clickMeSecond} />
       </View>
       <SalesButton click={clickMeThird} />
       <InventoryButton />

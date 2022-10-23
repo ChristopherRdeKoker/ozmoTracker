@@ -3,12 +3,10 @@ import { StyleSheet, TouchableOpacity, Text, View, Modal } from "react-native";
 import AddMeButton from "./components/CostComponents/AddMeButton";
 import { useState } from "react";
 import CostRenderedList from "./components/CostComponents/CostRenderedList";
-
-export default function SecondScreen(props) {
+import { CostDATA } from "../DATA";
+export default function SecondScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const onOpenModal = () => setModalVisible(true);
-
-  const { data } = props;
 
   return (
     <View style={styles.container}>
@@ -21,7 +19,7 @@ export default function SecondScreen(props) {
         <AddMeButton onOpen={onOpenModal} />
       </View>
       <View style={styles.renderedListContainer}>
-        <CostRenderedList data={data} />
+        <CostRenderedList data={CostDATA} />
       </View>
     </View>
   );
