@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     height: "100%",
     alignItems: "center",
-    paddingTop: 50,
+    paddingTop: 40,
 
     justifyContent: "flex-start",
   },
@@ -34,15 +34,17 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 150,
     // paddingTop: 40,
-    marginBottom: 50,
+    marginBottom: 40,
   },
 
   renderedListContainer: {
+    flex: 1,
     borderWidth: 4,
-    minHeight: 300,
-    minWidth: "90%",
+    minHeight: 200,
+    minWidth: "95%",
     backgroundColor: "#89CFF0",
     borderColor: "#28282B",
     borderRadius: 25,
+    marginBottom: 20,
   },
 });
