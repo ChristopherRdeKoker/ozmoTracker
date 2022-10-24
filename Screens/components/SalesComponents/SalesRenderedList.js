@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-export default function CostRenderedList(props) {
-  const [costs, setCosts] = useState(props.data);
+export default function SalesRenderedList(props) {
+  const [sales, setSales] = useState(props.data);
 
   // const currentMonth = new Date().getMonth() + 1;
   // const currentYear = new Date().getFullYear();
@@ -11,14 +11,14 @@ export default function CostRenderedList(props) {
     <View>
       <FlatList
         keyExtractor={(item) => item.id}
-        data={costs}
+        data={sales}
         renderItem={({ item }) => (
           <View>
             <Text style={styles.itemName}>
-              {item.id} : {item.name}
+              {item.id}: {item.name}
             </Text>
             <Text style={styles.itemInfo}>
-              {item.quantity}x R{item.costPrice} on {item.date}
+              {item.quantity}x R{item.salePrice} on {item.date}
             </Text>
           </View>
         )}

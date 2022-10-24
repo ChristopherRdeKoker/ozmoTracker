@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, Modal } from "react-native";
 import { useState } from "react";
-
+import SalesRenderedList from "./components/SalesComponents/SalesRenderedList.js";
 import SalesButton from "./components/SalesComponents/SalesAddButton.js";
+import { SalesDATA } from "../DATA";
 
 export default function ThirdScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -18,8 +19,8 @@ export default function ThirdScreen() {
         </Modal>
         <SalesButton onOpen={onOpenModal} />
       </View>
-      <View>
-        <Text>Rendered Sales List here</Text>
+      <View style={styles.renderedListContainer}>
+        <SalesRenderedList data={SalesDATA} />
       </View>
     </View>
   );
@@ -50,14 +51,14 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
 
-  // renderedListContainer: {
-  //   flex: 1,
-  //   borderWidth: 4,
-  //   minHeight: 200,
-  //   minWidth: "95%",
-  //   backgroundColor: "#89CFF0",
-  //   borderColor: "#28282B",
-  //   borderRadius: 10,
-  //   marginBottom: 20,
-  // },
+  renderedListContainer: {
+    flex: 1,
+    borderWidth: 4,
+    minHeight: 200,
+    minWidth: "95%",
+    backgroundColor: "#89CFF0",
+    borderColor: "#28282B",
+    borderRadius: 10,
+    marginBottom: 20,
+  },
 });
