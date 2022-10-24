@@ -42,6 +42,13 @@ export const CostDATA = [
     quantity: 2,
     date: "2022-10-18",
   },
+  {
+    id: 8,
+    name: "MorningTears",
+    costPrice: 150,
+    quantity: 4,
+    date: "2022-10-22",
+  },
 ];
 
 export const SalesData = [

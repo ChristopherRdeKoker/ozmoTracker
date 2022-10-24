@@ -18,7 +18,7 @@ export default function CostRenderedList(props) {
               {item.id} : {item.name}
             </Text>
             <Text style={styles.itemInfo}>
-              R{item.costPrice} on {item.date}
+              {item.quantity}x R{item.costPrice} on {item.date}
             </Text>
           </View>
         )}
