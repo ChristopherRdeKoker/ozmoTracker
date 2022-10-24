@@ -14,9 +14,12 @@ export default function CostRenderedList(props) {
         keyExtractor={(item) => item.id}
         data={costs}
         renderItem={({ item }) => (
-          <Text style={styles.item}>
-            {item.name}: R{item.costPrice} on {item.date}
-          </Text>
+          <View>
+            <Text style={styles.itemName}>{item.name}:</Text>
+            <Text style={styles.itemInfo}>
+              R{item.costPrice} on {item.date}
+            </Text>
+          </View>
         )}
       />
     </View>
@@ -24,7 +27,15 @@ export default function CostRenderedList(props) {
 }
 
 const styles = StyleSheet.create({
-  item: {
+  itemName: {
     backgroundColor: "#acdfdd",
+    margin: 10,
+    fontSize: 28,
+  },
+  itemInfo: {
+    margin: 3,
+    fontSize: 20,
+    marginLeft: 20,
+    marginBottom: 30,
   },
 });
