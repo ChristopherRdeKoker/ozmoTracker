@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
+import CostContext from "../../../CostContext";
 export default function CostRenderedList(props) {
-  const [costs, setCosts] = useState(props.data);
+  // const [costs, setCosts] = useState(props.data);
 
+  const { costData } = useContext(CostContext);
+  console.log(costData);
   // const currentMonth = new Date().getMonth() + 1;
   // const currentYear = new Date().getFullYear();
   //////////////////////////////////////////////////////
@@ -11,7 +14,7 @@ export default function CostRenderedList(props) {
     <View>
       <FlatList
         keyExtractor={(item) => item.id}
-        data={costs}
+        data={costData}
         renderItem={({ item }) => (
           <View>
             <Text style={styles.itemName}>

@@ -2,8 +2,8 @@ import { createContext, useState } from "react";
 
 const CostContext = createContext();
 //////////////data
-const data = [
-  { id: 1, name: "Shampoo1", costPrice: 125, quantity: 3, date: "2022-10-15" },
+const costData = [
+  { id: 1, name: "ShampooCCC", costPrice: 125, quantity: 3, date: "2022-10-15" },
   {
     id: 2,
     name: "Shampoo2",
@@ -56,6 +56,6 @@ const data = [
 ];
 
 export function CostProvider({ children }) {
-  return <CostContext.Provider value={data}>{children}</CostContext.Provider>;
+  return <CostContext.Provider value={{ costData }}>{children}</CostContext.Provider>;
 }
 export default CostContext;
