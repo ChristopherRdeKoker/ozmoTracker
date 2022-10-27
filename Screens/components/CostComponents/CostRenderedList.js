@@ -5,7 +5,7 @@ export default function CostRenderedList(props) {
   // const [costs, setCosts] = useState(props.data);
 
   const { costData } = useContext(CostContext);
-  console.log(costData);
+  // console.log(costData);
   // const currentMonth = new Date().getMonth() + 1;
   // const currentYear = new Date().getFullYear();
   //////////////////////////////////////////////////////
