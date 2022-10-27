@@ -53,9 +53,16 @@ const costData = [
     quantity: 4,
     date: "2022-10-22",
   },
+  { id: 9, name: "hmm", costPrice: 199, quantity: 2, date: "2022-10-31" },
 ];
 
 export function CostProvider({ children }) {
-  return <CostContext.Provider value={{ costData }}>{children}</CostContext.Provider>;
+  //add functions below:
+  const [costs, setCosts] = useState(costData);
+
+  const addCost = (name, costPrice, quantity, date, id) => {
+    return setCosts((prevState) => [...prevState, { name, costPrice, quantity, date, id }]);
+  };
+  return <CostContext.Provider value={{ costs, addCost }}>{children}</CostContext.Provider>;
 }
 export default CostContext;

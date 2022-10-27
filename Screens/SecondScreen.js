@@ -1,12 +1,16 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text, View, Modal } from "react-native";
 import AddMeButton from "./components/CostComponents/AddMeButton";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CostRenderedList from "./components/CostComponents/CostRenderedList";
 import { CostDATA } from "../DATA";
+import CostContext from "../CostContext";
+import CostFillinForm from "./components/CostComponents/CostFillinForm";
 export default function SecondScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const onOpenModal = () => setModalVisible(true);
+
+  const { addCost } = useContext(CostContext);
 
   return (
     <View style={styles.container}>
@@ -14,6 +18,10 @@ export default function SecondScreen() {
         <Modal animationType="slide" visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
           <View>
             <Text> Hey Modal it up in da house!</Text>
+            <CostFillinForm />
+            <TouchableOpacity onPress={() => addCost("test1111", 2, 2, "10-10-10", 112211121)}>
+              <Text style={styles.clickMe}>Click Add Cost Here(Hard coded atm)</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
         <AddMeButton onOpen={onOpenModal} />
@@ -59,5 +67,15 @@ const styles = StyleSheet.create({
     borderColor: "#28282B",
     borderRadius: 10,
     marginBottom: 20,
+  },
+  clickMe: {
+    fontSize: 20,
+    borderWidth: 3,
+    borderColor: "grey",
+    paddingLeft: 80,
+    width: "80%",
+    marginLeft: 30,
+    marginTop: 50,
+    borderRadius: 10,
   },
 });

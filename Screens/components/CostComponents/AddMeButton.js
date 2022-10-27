@@ -18,3 +18,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+//below is for later when wanting to add the form data
+// const id = costs.length + 2;
+// const fullDate = new Date();
+// const day = fullDate.getDate();
+// const month = fullDate.getMonth() + 1;
+// const year = fullDate.getFullYear();
+// const date = `${year}-${month}-${day}`;
+// console.log(date.toString());
