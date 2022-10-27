@@ -1,7 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { useContext } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-export default function SalesRenderedList(props) {
-  const [sales, setSales] = useState(props.data);
+import SalesContext from "../../../SalesContext";
+
+export default function SalesRenderedList() {
+  const { salesData } = useContext(SalesContext);
+  // console.log(salesData);
+  // const [sales, setSales] = useState(props.data);
 
   // const currentMonth = new Date().getMonth() + 1;
   // const currentYear = new Date().getFullYear();
@@ -11,7 +16,7 @@ export default function SalesRenderedList(props) {
     <View>
       <FlatList
         keyExtractor={(item) => item.id}
-        data={sales}
+        data={salesData}
         renderItem={({ item }) => (
           <View>
             <Text style={styles.itemName}>
