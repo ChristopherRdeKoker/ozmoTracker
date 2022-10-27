@@ -17,7 +17,7 @@ export default function SecondScreen() {
       <View style={styles.addMeButtonContainer}>
         <Modal animationType="slide" visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
           <View>
-            <Text> Hey Modal it up in da house!</Text>
+            {/* <Text> Hey Modal it up in da house!</Text> */}
             <CostFillinForm />
             <TouchableOpacity onPress={() => addCost("test1111", 2, 2, "10-10-10", 112211121)}>
               <Text style={styles.clickMe}>Click Add Cost Here(Hard coded atm)</Text>
@@ -69,13 +69,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   clickMe: {
-    fontSize: 20,
+    fontSize: 22,
     borderWidth: 3,
     borderColor: "grey",
-    paddingLeft: 80,
-    width: "80%",
+    paddingLeft: "10%",
+    width: "85%",
     marginLeft: 30,
-    marginTop: 50,
+    marginTop: 25,
     borderRadius: 10,
+    // backgroundColor: "#A3EFAB",
+    backgroundColor: "#EFA3B5",
+    height: 70,
   },
 });
