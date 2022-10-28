@@ -1,7 +1,11 @@
 import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
+import { useState } from "react";
 
 export default function CostFillinForm() {
-  let marioInfo = {};
+  const [name, setName] = useState("");
+  const [costPrice, setCostPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+  // console.log(quantity);
 
   return (
     <View style={styles.container}>
@@ -9,25 +13,19 @@ export default function CostFillinForm() {
       <TextInput
         style={styles.inputText}
         placeholder="Type product name here"
-        onChange={(val) => {
-          marioInfo.name = val;
-        }}
+        onChangeText={(val) => setName(val)}
       ></TextInput>
       <TextInput
         style={styles.inputNum}
         placeholder="Price (ZAR)"
-        onChangeText={(val) => {
-          console.log(marioInfo.name + val);
-        }}
+        onChangeText={(val) => setCostPrice(val)}
         keyboardType="phone-pad"
       ></TextInput>
       <TextInput
         style={styles.inputNum}
         keyboardType="phone-pad"
         placeholder="Quantity"
-        // onChangeText={() => {
-        //   console.log(marioInfo.name + val);
-        // }}
+        onChangeText={(val) => setQuantity(val)}
       ></TextInput>
     </View>
   );
