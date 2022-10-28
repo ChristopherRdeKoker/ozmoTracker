@@ -1,14 +1,10 @@
 import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
-import { useState, useContext } from "react";
-import CostContext from "../../../CostContext";
+
+import { useCostContextMethods } from "../../../CostContext";
 
 export default function CostFillinForm() {
-  const [name, setName] = useState("");
-  const [costPrice, setCostPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  // console.log(quantity);
-  const { addCost } = useContext(CostContext);
-  // const pushCostsToState = function (name,costPrice, quantity)
+  const { curriedFunction, form, addCosts } = useCostContextMethods();
+
   return (
     <View>
       <View style={styles.container}>
@@ -16,24 +12,27 @@ export default function CostFillinForm() {
         <TextInput
           style={styles.inputText}
           placeholder="Type product name here"
-          onChangeText={(val) => setName(val)}
+          onChangeText={curriedFunction("name")}
+          value={form["name"]}
         ></TextInput>
         <TextInput
           style={styles.inputNum}
           placeholder="Price (ZAR)"
-          onChangeText={(val) => setCostPrice(val)}
+          onChangeText={curriedFunction("costPrice")}
           keyboardType="phone-pad"
+          value={form.costPrice}
         ></TextInput>
         <TextInput
           style={styles.inputNum}
           keyboardType="phone-pad"
           placeholder="Quantity"
-          onChangeText={(val) => setQuantity(val)}
+          onChangeText={curriedFunction("quantity")}
+          value={form.quantity ?? ""}
         ></TextInput>
       </View>
       <View>
-        <TouchableOpacity onPress={() => addCost("test1111", 2, 2, "10-10-10", 112211121)}>
-          <Text style={styles.clickMe}>Click Add Cost Here(Hard coded atm)</Text>
+        <TouchableOpacity onPress={addCosts}>
+          <Text style={styles.clickMe}>Click Add Cost Here</Text>
         </TouchableOpacity>
       </View>
     </View>

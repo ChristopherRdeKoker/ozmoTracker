@@ -1,68 +1,65 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { costData } from "./costData";
 
 const CostContext = createContext();
-//////////////data
-const costData = [
-  { id: 1, name: "ShampooCCC", costPrice: 125, quantity: 3, date: "2022-10-15" },
-  {
-    id: 2,
-    name: "Shampoo2",
-    costPrice: 150,
-    quantity: 3,
-    date: "2022-10-18",
-  },
-  {
-    id: 3,
-    name: "Conditioner1",
-    costPrice: 200,
-    quantity: 2,
-    date: "2022-10-20",
-  },
-  {
-    id: 4,
-    name: "Conditioner4",
-    costPrice: 250,
-    quantity: 1,
-    date: "2022-10-02",
-  },
-  {
-    id: 5,
-    name: "Mask",
-    costPrice: 75,
-    quantity: 6,
-    date: "2022-10-07",
-  },
-  {
-    id: 6,
-    name: "Juicy Mask",
-    costPrice: 79,
-    quantity: 4,
-    date: "2022-10-14",
-  },
-  {
-    id: 7,
-    name: "KittyMilk",
-    costPrice: 50,
-    quantity: 2,
-    date: "2022-10-18",
-  },
-  {
-    id: 8,
-    name: "MorningTears",
-    costPrice: 150,
-    quantity: 4,
-    date: "2022-10-22",
-  },
-  { id: 9, name: "hmm", costPrice: 199, quantity: 2, date: "2022-10-31" },
-];
+
+export function useCostContext() {
+  const costContext = useContext(CostContext);
+  return costContext;
+}
+
+export function useCostContextMethods() {
+  const { setCosts } = useCostContext();
+  const [form, setForm] = useState({});
+
+  function curriedFunction(bananas) {
+    return function mutate(value) {
+      setForm((prev) => ({
+        ...prev,
+        [bananas]: value,
+      }));
+    };
+  }
+
+  async function addCosts() {
+    const rawExistingCostData = await AsyncStorage.getItem("costData");
+    const existingCostData = JSON.parse(rawExistingCostData);
+    setCosts((prev) => {
+      const newForm = { ...form, id: prev.length + 1 };
+      existingCostData.push(newForm);
+
+      return [...prev, newForm];
+    });
+    await AsyncStorage.setItem("costData", JSON.stringify(existingCostData));
+    setForm({});
+  }
+
+  return {
+    addCosts,
+    curriedFunction,
+    form,
+  };
+}
 
 export function CostProvider({ children }) {
   //add functions below:
-  const [costs, setCosts] = useState(costData);
+  const [costs, setCosts] = useState([]);
 
-  const addCost = (name, costPrice, quantity, date, id) => {
-    return setCosts((prevState) => [...prevState, { name, costPrice, quantity, date, id }]);
-  };
-  return <CostContext.Provider value={{ costs, addCost }}>{children}</CostContext.Provider>;
+  async function seedCostData() {
+    const existingData = await AsyncStorage.getItem("costData");
+    if (!existingData || JSON.parse(existingData).length === 0) {
+      await AsyncStorage.setItem("costData", JSON.stringify(costData));
+    }
+    const asyncCostData = await AsyncStorage.getItem("costData");
+    setCosts(JSON.parse(asyncCostData));
+  }
+
+  React.useEffect(() => {
+    seedCostData();
+  }, []);
+
+  return <CostContext.Provider value={{ costs, setCosts }}>{children}</CostContext.Provider>;
 }
 export default CostContext;
