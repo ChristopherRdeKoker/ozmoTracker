@@ -17,12 +17,7 @@ export default function SecondScreen() {
       <View style={styles.addMeButtonContainer}>
         <Modal animationType="slide" visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
           <View>
-            {/* <Text> Hey Modal it up in da house!</Text> */}
-
             <CostFillinForm />
-            <TouchableOpacity onPress={() => addCost("test1111", 2, 2, "10-10-10", 112211121)}>
-              <Text style={styles.clickMe}>Click Add Cost Here(Hard coded atm)</Text>
-            </TouchableOpacity>
           </View>
         </Modal>
         <AddMeButton onOpen={onOpenModal} />
