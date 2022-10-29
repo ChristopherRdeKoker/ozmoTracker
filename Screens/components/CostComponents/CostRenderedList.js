@@ -6,9 +6,9 @@ export default function CostRenderedList(props) {
 
   const { costs } = useContext(CostContext);
 
-  // console.log(costData);
-  // const currentMonth = new Date().getMonth() + 1;
-  // const currentYear = new Date().getFullYear();
+  // const logg = function () {
+  //   return console.log(`test`);
+  // };
   //////////////////////////////////////////////////////
 
   return (
@@ -21,6 +21,7 @@ export default function CostRenderedList(props) {
             <Text style={styles.itemName}>
               {item.id} : {item.name}
             </Text>
+            {/* <button title="X" onPress={logg}></button> */}
             <Text style={styles.itemInfo}>
               {item.quantity}x R{item.costPrice} on {item.date}
             </Text>
