@@ -2,8 +2,6 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { dateTime } from "./utils";
 
-import { costData } from "./costData";
-
 const CostContext = createContext();
 
 export function useCostContext() {
@@ -28,8 +26,12 @@ export function useCostContextMethods() {
     const rawExistingCostData = await AsyncStorage.getItem("costData");
     const existingCostData = JSON.parse(rawExistingCostData);
 
+    const newForm = await sendDataToServer({
+      ...form,
+      date: dateTime(),
+    });
+
     setCosts((prev) => {
-      const newForm = { ...form, id: prev.length + 1, date: dateTime() };
       existingCostData.push(newForm);
 
       return [...prev, newForm];
@@ -38,9 +40,15 @@ export function useCostContextMethods() {
     setForm({});
   }
 
+  async function deleteCost(id) {
+    const result = await deleteExpense(id);
+    setCosts(result);
+  }
+
   return {
     addCosts,
     curriedFunction,
+    deleteCost,
     form,
   };
 }
@@ -50,12 +58,8 @@ export function CostProvider({ children }) {
   const [costs, setCosts] = useState([]);
 
   async function seedCostData() {
-    const existingData = await AsyncStorage.getItem("costData");
-    if (!existingData || JSON.parse(existingData).length === 0) {
-      await AsyncStorage.setItem("costData", JSON.stringify(costData));
-    }
-    const asyncCostData = await AsyncStorage.getItem("costData");
-    setCosts(JSON.parse(asyncCostData));
+    const costData = await getCostData();
+    setCosts(costData);
   }
 
   React.useEffect(() => {
@@ -65,3 +69,59 @@ export function CostProvider({ children }) {
   return <CostContext.Provider value={{ costs, setCosts }}>{children}</CostContext.Provider>;
 }
 export default CostContext;
+
+/// for research > these are known as "CRUD"opperations
+/// C - Create
+/// R - Read
+/// U - Update
+/// D - Delete
+/// all done through HTTP services/Ajax requests via RESTful services.
+async function sendDataToServer(form) {
+  let headersList = {
+    Accept: "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+    "Content-Type": "application/json",
+  };
+
+  let bodyContent = JSON.stringify(form);
+
+  let response = await fetch("http://192.168.1.36:8888", {
+    method: "POST",
+    body: bodyContent,
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
+}
+
+async function getCostData() {
+  let headersList = {
+    Accept: "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+    "Content-Type": "application/json",
+  };
+
+  let response = await fetch("http://192.168.1.36:8888", {
+    method: "GET",
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
+}
+
+export async function deleteExpense(id) {
+  let headersList = {
+    Accept: "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+  };
+
+  let response = await fetch(`http://192.168.1.36:8888/expense?id=${id}`, {
+    method: "DELETE",
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
+}

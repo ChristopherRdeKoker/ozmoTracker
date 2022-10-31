@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Modal } from "react-native";
 import { useState } from "react";
 import SalesRenderedList from "./components/SalesComponents/SalesRenderedList.js";
 import SalesButton from "./components/SalesComponents/SalesAddButton.js";
-import { SalesDATA } from "../DATA";
+import { salesData } from "../SalesContext";
 
 export default function ThirdScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -20,7 +20,7 @@ export default function ThirdScreen() {
         <SalesButton onOpen={onOpenModal} />
       </View>
       <View style={styles.renderedListContainer}>
-        <SalesRenderedList data={SalesDATA} />
+        <SalesRenderedList data={salesData} />
       </View>
     </View>
   );

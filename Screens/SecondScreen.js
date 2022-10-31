@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, Text, View, Modal } from "react-native";
 import AddMeButton from "./components/CostComponents/AddMeButton";
 import { useState, useContext } from "react";
 import CostRenderedList from "./components/CostComponents/CostRenderedList";
-import { CostDATA } from "../DATA";
+import { costData } from "../costData";
 import CostContext from "../CostContext";
 import CostFillinForm from "./components/CostComponents/CostFillinForm";
 export default function SecondScreen() {
@@ -23,7 +23,7 @@ export default function SecondScreen() {
         <AddMeButton onOpen={onOpenModal} />
       </View>
       <View style={styles.renderedListContainer}>
-        <CostRenderedList data={CostDATA} />
+        <CostRenderedList data={costData} />
       </View>
     </View>
   );
