@@ -4,6 +4,7 @@ import { useState } from "react";
 import SalesRenderedList from "./components/SalesComponents/SalesRenderedList.js";
 import SalesButton from "./components/SalesComponents/SalesAddButton.js";
 import { salesData } from "../SalesContext";
+import SalesFillinForm from "./components/SalesComponents/SalesFillinForm.js";
 
 export default function ThirdScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -14,7 +15,8 @@ export default function ThirdScreen() {
       <View style={styles.addMeButtonContainer}>
         <Modal animationType="slide" visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
           <View>
-            <Text> Hey Modal it up in da house! Add sales</Text>
+            {/* <Text> Hey Modal it up in da house! Add sales</Text> */}
+            <SalesFillinForm />
           </View>
         </Modal>
         <SalesButton onOpen={onOpenModal} />
