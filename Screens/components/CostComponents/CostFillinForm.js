@@ -8,7 +8,6 @@ export default function CostFillinForm() {
   return (
     <View>
       <View style={styles.container}>
-        {/* <Text>1234</Text> */}
         <TextInput
           style={styles.inputText}
           placeholder="Type product name here"
@@ -31,7 +30,7 @@ export default function CostFillinForm() {
         ></TextInput>
       </View>
       <View>
-        <TouchableOpacity onPress={addCosts}>
+        <TouchableOpacity style={styles.centeredButton} onPress={addCosts}>
           <Text style={styles.clickMe}>Click Add Cost Here</Text>
         </TouchableOpacity>
       </View>
@@ -47,7 +46,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 600,
     margin: "auto",
-    // backgroundColor: "#DABFF2",
     backgroundColor: "#252326",
   },
   inputNum: {
@@ -74,16 +72,27 @@ const styles = StyleSheet.create({
     paddingLeft: 80,
   },
   clickMe: {
-    fontSize: 22,
+    fontSize: 30,
     borderWidth: 3,
     borderColor: "grey",
-    paddingLeft: "10%",
+    // paddingLeft: "10%",
     width: "85%",
-    marginLeft: 30,
-    marginTop: 25,
+    marginLeft: 15,
+    marginTop: 15,
     borderRadius: 10,
+    paddingLeft: 35,
+    paddingTop: 15,
     // backgroundColor: "#A3EFAB",
     backgroundColor: "#EFA3B5",
     height: 70,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  centeredButton: {
+    height: 180,
+    // flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#5A5A5A",
   },
 });
