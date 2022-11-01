@@ -13,7 +13,7 @@ export default function AddMeButton(props) {
 const styles = StyleSheet.create({
   addExpenseButton: {
     fontSize: 42,
-
+    fontWeight: "bold",
     justifyContent: "center",
     alignItems: "center",
   },
