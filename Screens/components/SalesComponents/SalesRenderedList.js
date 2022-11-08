@@ -2,21 +2,22 @@
 import { useContext } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import SalesContext from "../../../SalesContext";
+import { useSalesContextMethods } from "../../../SalesContext";
 
-export default function SalesRenderedList() {
-  const { salesData } = useContext(SalesContext);
+export default function SalesRenderedList(props) {
+  // const { salesData } = useContext(SalesContext);
   // console.log(salesData);
   // const [sales, setSales] = useState(props.data);
 
-  // const currentMonth = new Date().getMonth() + 1;
-  // const currentYear = new Date().getFullYear();
+  const { deleteSales } = useSalesContextMethods();
+  const { sales } = useContext(SalesContext);
   //////////////////////////////////////////////////////
 
   return (
     <View>
       <FlatList
-        keyExtractor={(item) => item.id}
-        data={salesData}
+        keyExtractor={(item) => item.id.toString()}
+        data={sales}
         renderItem={({ item }) => (
           <View>
             <Text style={styles.itemName}>
@@ -47,5 +48,25 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: 35,
     marginBottom: 30,
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexGrow: 1,
+    alignItems: "center",
+    width: "100%",
+    padding: 8,
+  },
+  button: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#fff",
+    borderRadius: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#777",
+    borderWidth: 1,
+    // marginLeft: 20,
   },
 });
