@@ -3,14 +3,14 @@ import { StyleSheet, TouchableOpacity, Text, View, Modal } from "react-native";
 import AddMeButton from "./components/CostComponents/AddMeButton";
 import { useState, useContext } from "react";
 import CostRenderedList from "./components/CostComponents/CostRenderedList";
-import { costData } from "../costData";
+import { costData } from "../costData"; //is needed?
 import CostContext from "../CostContext";
 import CostFillinForm from "./components/CostComponents/CostFillinForm";
 export default function SecondScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const onOpenModal = () => setModalVisible(true);
 
-  const { addCost } = useContext(CostContext);
+  const { addCost } = useContext(CostContext); //implemented but never used?
 
   return (
     <View style={styles.container}>

@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Modal } from "react-native";
+import SalesButton from "./components/SalesComponents/SalesAddButton.js";
 import { useState } from "react";
 import SalesRenderedList from "./components/SalesComponents/SalesRenderedList.js";
-import SalesButton from "./components/SalesComponents/SalesAddButton.js";
 import { salesData } from "../SalesContext";
 import SalesFillinForm from "./components/SalesComponents/SalesFillinForm.js";
 

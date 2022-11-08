@@ -1,15 +1,34 @@
 import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
-
+import { useSalesContextMethods } from "../../../SalesContext";
 export default function SalesFillinForm() {
+  const { curriedFunction2, form, addSales } = useSalesContextMethods();
+
   return (
     <View>
       <View style={styles.container}>
-        <TextInput style={styles.inputText} placeholder="Type product name here"></TextInput>
-        <TextInput style={styles.inputNum} placeholder="Price Sold (ZAR)" keyboardType="phone-pad"></TextInput>
-        <TextInput style={styles.inputNum} keyboardType="phone-pad" placeholder="Quantity"></TextInput>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Type product name here"
+          onChangeText={curriedFunction2("name")}
+          value={form["name"]}
+        ></TextInput>
+        <TextInput
+          style={styles.inputNum}
+          placeholder="Price Sold (ZAR)"
+          keyboardType="phone-pad"
+          onChangeText={curriedFunction2("salePrice")}
+          value={form.salePrice}
+        ></TextInput>
+        <TextInput
+          style={styles.inputNum}
+          keyboardType="phone-pad"
+          placeholder="Quantity"
+          onChangeText={curriedFunction2("quantity")}
+          value={form.quantity ?? ""}
+        ></TextInput>
       </View>
       <View>
-        <TouchableOpacity style={styles.centeredButton}>
+        <TouchableOpacity style={styles.centeredButton} onPress={addSales}>
           <Text style={styles.clickMe}>Click Add Sales Here</Text>
         </TouchableOpacity>
       </View>

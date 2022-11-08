@@ -1,46 +1,109 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+import { salesData } from "./salesData";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { dateTime } from "./utils";
+import { deleteExpense } from "./CostContext";
 
 const SalesContext = createContext();
-//////////////data
-const salesData = [
-  {
-    id: 1,
-    name: "Shampoo1sale",
-    salePrice: 250, //was 125
-    quantity: 1,
-    date: "2022-10-21",
-  },
-  {
-    id: 2,
-    name: "Shampoo2BBBB",
-    salePrice: 250, //was 125
-    quantity: 2,
-    date: "2022-10-29",
-  },
-  {
-    id: 3,
-    name: "Shampoo2mahni",
-    salePrice: 129, //was 125
-    quantity: 1,
-    date: "2022-10-24",
-  },
-  {
-    id: 4,
-    name: "ShamsnoopyDoge",
-    salePrice: 115, //was 125
-    quantity: 1,
-    date: "2022-10-04",
-  },
-  {
-    id: 5,
-    name: "ConditionerWhato2",
-    salePrice: 315, //was 125
-    quantity: 2,
-    date: "2022-10-13",
-  },
-];
+
+export function useSalesContext() {
+  const salesContext = useContext(SalesContext);
+  return salesContext;
+}
+
+export function useSalesContextMethods() {
+  const { setSales } = useSalesContext();
+  const [form, setForm] = useState({});
+
+  function curriedFunction2(oranges) {
+    return function mutate(value) {
+      setForm((prev) => ({
+        ...prev,
+        [oranges]: value,
+      }));
+    };
+  }
+
+  async function addSales() {
+    const rawExistingSalesData = await AsyncStorage.getItem("salesData"); //wont work since hardcoded data atm
+    const existingSalesData = JSON.parse(rawExistingSalesData);
+
+    const newForm = await sendDataToServer2({
+      ...form,
+      date: dateTime(),
+    });
+
+    setSales((prev) => {
+      existingSalesData.push(newForm);
+      return [...prev, newForm];
+    });
+    await AsyncStorage.setItem("salesData", JSON.stringify(existingSalesData));
+    setForm({});
+  }
+
+  async function deleteSales(id) {
+    const result = await deleteSales(id);
+    setSales(result);
+  }
+
+  return {
+    addSales,
+    curriedFunction2,
+    deleteSales,
+    form, //might throw err with same name, consider "form2"
+  };
+}
 
 export function SalesProvider({ children }) {
-  return <SalesContext.Provider value={{ salesData }}>{children}</SalesContext.Provider>;
+  //yolo functions below
+  const [sales, setSales] = useState([]);
+
+  async function seedSalesData() {
+    const salesData = await getSalesData();
+    setSales(salesData);
+  }
+
+  React.useEffect(() => {
+    seedSalesData();
+  }, []);
+
+  return <SalesContext.Provider value={{ sales, setSales }}>{children}</SalesContext.Provider>;
 }
+
 export default SalesContext;
+
+/// for research > these are known as "CRUD"opperations x2 boooooi
+/// C - Create
+/// R - Read
+/// U - Update
+/// D - Delete
+/// all done through HTTP services/Ajax requests via RESTful services.
+
+async function sendDataToServer2(form) {
+  /////
+  let headersList = {
+    Accept: "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+    "Content-Type": "application/json",
+  };
+
+  let bodyContent = JSON.stringify(form);
+
+  let response = await fetch("http://localhost:8888/api/saleData", {
+    //maybe change this ⭐
+    method: "POST",
+    body: bodyContent,
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
+}
+
+async function getSalesData() {
+  /////
+}
+
+export async function deleteSales(id) {
+  ////
+}

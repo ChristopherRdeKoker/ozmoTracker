@@ -1,5 +1,4 @@
 import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
-
 import { useCostContextMethods } from "../../../CostContext";
 
 export default function CostFillinForm() {
