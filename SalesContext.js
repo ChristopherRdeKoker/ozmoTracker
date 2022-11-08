@@ -102,8 +102,32 @@ async function sendDataToServer2(form) {
 
 async function getSalesData() {
   /////
+  let headersList = {
+    Accept: "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+  };
+
+  let response = await fetch("http://localhost:8888/api/saleData", {
+    method: "GET",
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
 }
 
 export async function deleteSales(id) {
   ////
+  let headersList = {
+    Accept: "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+  };
+
+  let response = await fetch(`http://localhost:8888/api/saleData/${id}`, {
+    method: "DELETE",
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
 }
