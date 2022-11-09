@@ -77,6 +77,9 @@ export default CostContext;
 /// D - Delete
 /// all done through HTTP services/Ajax requests via RESTful services.
 async function sendDataToServer(form) {
+  // let bodyContent = JSON.stringify(form);
+  /////////////////////
+
   let headersList = {
     Accept: "*/*",
     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
@@ -85,7 +88,7 @@ async function sendDataToServer(form) {
 
   let bodyContent = JSON.stringify(form);
 
-  let response = await fetch("http://192.168.1.36:8888", {
+  let response = await fetch("http://192.168.1.36:8888/api/costData", {
     method: "POST",
     body: bodyContent,
     headers: headersList,
@@ -99,10 +102,9 @@ async function getCostData() {
   let headersList = {
     Accept: "*/*",
     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    "Content-Type": "application/json",
   };
 
-  let response = await fetch("http://192.168.1.36:8888", {
+  let response = await fetch("http://192.168.1.36:8888/api/costData", {
     method: "GET",
     headers: headersList,
   });
