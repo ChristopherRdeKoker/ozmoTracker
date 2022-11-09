@@ -123,7 +123,7 @@ export async function deleteSales(id) {
     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
   };
 
-  let response = await fetch(`http://localhost:8888/api/saleData?id=${id}`, {
+  let response = await fetch(`http://192.168.1.36:8888/api/saleData?id=${id}`, {
     method: "DELETE",
     headers: headersList,
   });
