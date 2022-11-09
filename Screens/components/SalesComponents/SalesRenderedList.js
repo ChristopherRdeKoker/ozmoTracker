@@ -20,9 +20,14 @@ export default function SalesRenderedList(props) {
         data={sales}
         renderItem={({ item }) => (
           <View>
-            <Text style={styles.itemName}>
-              {item.id}: {item.name}
-            </Text>
+            <View style={styles.row}>
+              <Text style={styles.itemName}>
+                {item.id}: {item.name}
+              </Text>
+              <TouchableOpacity onPress={() => deleteSales(item.id)} style={styles.button}>
+                <Text>X</Text>
+              </TouchableOpacity>
+            </View>
             <Text style={styles.itemInfo}>
               {item.quantity}x R{item.salePrice} on {item.date}
             </Text>

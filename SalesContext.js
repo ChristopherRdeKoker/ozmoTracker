@@ -1,8 +1,8 @@
-import React, { createContext, useState, useContext } from "react";
-import { salesData } from "./salesData";
+import React, { createContext, useState, useContext, useEffect } from "react";
+// import { salesData } from "./salesData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { dateTime } from "./utils";
-import { deleteExpense } from "./CostContext";
+// import { deleteExpense } from "./CostContext";
 
 const SalesContext = createContext();
 
@@ -80,6 +80,7 @@ export default SalesContext;
 /// all done through HTTP services/Ajax requests via RESTful services.
 
 async function sendDataToServer2(form) {
+  // let bodyContent = JSON.stringify(form);
   /////
   let headersList = {
     Accept: "*/*",
@@ -89,8 +90,7 @@ async function sendDataToServer2(form) {
 
   let bodyContent = JSON.stringify(form);
 
-  let response = await fetch("http://localhost:8888/api/saleData", {
-    //maybe change this ⭐
+  let response = await fetch("http://192.168.1.36:8888/api/saleData", {
     method: "POST",
     body: bodyContent,
     headers: headersList,
@@ -107,7 +107,7 @@ async function getSalesData() {
     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
   };
 
-  let response = await fetch("http://localhost:8888/api/saleData", {
+  let response = await fetch("http://192.168.1.36:8888/api/saleData", {
     method: "GET",
     headers: headersList,
   });
@@ -123,7 +123,7 @@ export async function deleteSales(id) {
     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
   };
 
-  let response = await fetch(`http://localhost:8888/api/saleData/${id}`, {
+  let response = await fetch(`http://localhost:8888/api/saleData?id=${id}`, {
     method: "DELETE",
     headers: headersList,
   });
