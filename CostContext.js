@@ -35,7 +35,7 @@ export function useCostContextMethods() {
 
     setCosts((prev) => {
       // console.log(newForm); //why is this repsonding 3 times?
-      console.debug(existingCostData);
+      // console.debug(existingCostData);
       existingCostData.push(newForm);
 
       return [...prev, newForm];
