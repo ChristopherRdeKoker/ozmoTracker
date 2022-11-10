@@ -84,7 +84,7 @@ async function sendDataToServer2(form) {
   /////
   let headersList = {
     Accept: "*/*",
-    "User-Agent": "Thunder Client (http://www.thunderclient.com)",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
     "Content-Type": "application/json",
   };
 
@@ -104,7 +104,7 @@ async function getSalesData() {
   /////
   let headersList = {
     Accept: "*/*",
-    "User-Agent": "Thunder Client (http://www.thunderclient.com)",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
   };
 
   let response = await fetch("http://192.168.1.36:8888/api/saleData", {
@@ -120,10 +120,10 @@ export async function deleteSales(id) {
   ////
   let headersList = {
     Accept: "*/*",
-    "User-Agent": "Thunder Client (http://www.thunderclient.com)",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
   };
 
-  let response = await fetch(`http://192.168.1.36:8888/api/saleData/?id=${id}`, {
+  let response = await fetch(`http://192.168.1.36:8888/api/saleData?id=${id}`, {
     method: "DELETE",
     headers: headersList,
   });
