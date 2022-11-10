@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { useContext } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import SalesContext from "../../../SalesContext";
 import { useSalesContextMethods } from "../../../SalesContext";
 

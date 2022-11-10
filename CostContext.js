@@ -86,7 +86,7 @@ async function sendDataToServer(form) {
     "Content-Type": "application/json",
   };
 
-  let bodyContent = JSON.stringify(form);
+  let bodyContent = JSON.stringify(form); //maybe in obj form?
 
   let response = await fetch("http://192.168.1.36:8888/api/costData", {
     method: "POST",
@@ -95,6 +95,7 @@ async function sendDataToServer(form) {
   });
 
   let data = await response.json();
+  // console.log(data);
   return data;
 }
 
@@ -110,6 +111,7 @@ async function getCostData() {
   });
 
   let data = await response.json();
+
   return data;
 }
 
@@ -119,11 +121,12 @@ export async function deleteExpense(id) {
     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
   };
 
-  let response = await fetch(`http://192.168.1.36:8888/expense?id=${id}`, {
+  let response = await fetch(`http://192.168.1.36:8888/api/costData?id=${id}`, {
     method: "DELETE",
     headers: headersList,
   });
 
   let data = await response.json();
+
   return data;
 }
