@@ -22,20 +22,25 @@ export function useCostContextMethods() {
     };
   }
 
+  ///tinkering below, original state is below x2:
   async function addCosts() {
     const rawExistingCostData = await AsyncStorage.getItem("costData");
-    const existingCostData = JSON.parse(rawExistingCostData);
-
+    const existingCostData = JSON.parse(rawExistingCostData || "[]");
+    // console.log(existingCostData); //err here ⭐
     const newForm = await sendDataToServer({
       ...form,
       date: dateTime(),
     });
+    // console.log(newForm);
 
     setCosts((prev) => {
+      // console.log(newForm); //why is this repsonding 3 times?
+      console.debug(existingCostData);
       existingCostData.push(newForm);
 
       return [...prev, newForm];
     });
+
     await AsyncStorage.setItem("costData", JSON.stringify(existingCostData));
     setForm({});
   }
@@ -51,6 +56,35 @@ export function useCostContextMethods() {
     deleteCost,
     form,
   };
+  // async function addCosts() {
+  //   const rawExistingCostData = await AsyncStorage.getItem("costData");
+  //   const existingCostData = JSON.parse(rawExistingCostData);
+
+  //   const newForm = await sendDataToServer({
+  //     ...form,
+  //     date: dateTime(),
+  //   });
+
+  //   setCosts((prev) => {
+  //     existingCostData.push(newForm);
+
+  //     return [...prev, newForm];
+  //   });
+  //   await AsyncStorage.setItem("costData", JSON.stringify(existingCostData));
+  //   setForm({});
+  // }
+
+  // async function deleteCost(id) {
+  //   const result = await deleteExpense(id);
+  //   setCosts(result);
+  // }
+
+  // return {
+  //   addCosts,
+  //   curriedFunction,
+  //   deleteCost,
+  //   form,
+  // };
 }
 
 export function CostProvider({ children }) {
@@ -68,6 +102,7 @@ export function CostProvider({ children }) {
 
   return <CostContext.Provider value={{ costs, setCosts }}>{children}</CostContext.Provider>;
 }
+
 export default CostContext;
 
 /// for research > these are known as "CRUD"opperations

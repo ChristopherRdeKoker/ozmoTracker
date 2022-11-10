@@ -26,7 +26,7 @@ export function useSalesContextMethods() {
 
   async function addSales() {
     const rawExistingSalesData = await AsyncStorage.getItem("salesData"); //wont work since hardcoded data atm
-    const existingSalesData = JSON.parse(rawExistingSalesData);
+    const existingSalesData = JSON.parse(rawExistingSalesData || "[]");
 
     const newForm = await sendDataToServer2({
       ...form,
@@ -41,7 +41,7 @@ export function useSalesContextMethods() {
     setForm({});
   }
 
-  async function deleteSales(id) {
+  async function handleDeleteSales(id) {
     const result = await deleteSales(id);
     setSales(result);
   }
@@ -49,7 +49,7 @@ export function useSalesContextMethods() {
   return {
     addSales,
     curriedFunction2,
-    deleteSales,
+    deleteSales: handleDeleteSales,
     form, //might throw err with same name, consider "form2"
   };
 }
