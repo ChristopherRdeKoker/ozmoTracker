@@ -66,12 +66,13 @@ const styles = StyleSheet.create({
   button: {
     width: 50,
     height: 50,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#777",
     borderWidth: 1,
+    backgroundColor: "#ADD8E6",
     // marginLeft: 20,
   },
 });
