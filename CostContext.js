@@ -13,6 +13,13 @@ export function useCostContextMethods() {
   const { setCosts } = useCostContext();
   const [form, setForm] = useState({});
 
+  // function curriedList(value) {
+  //   setForm((prev) => ({
+  //     ...prev,
+  //     name: value,
+  //   }));
+  // }
+  // }
   function curriedFunction(bananas) {
     return function mutate(value) {
       setForm((prev) => ({
@@ -55,6 +62,7 @@ export function useCostContextMethods() {
     curriedFunction,
     deleteCost,
     form,
+    // curriedList,
   };
   // async function addCosts() {
   //   const rawExistingCostData = await AsyncStorage.getItem("costData");
