@@ -27,7 +27,7 @@ export default function CostRenderedList(props) {
               </TouchableOpacity>
             </View>
             <Text style={styles.itemInfo}>
-              {item.quantity} x R{item.costPrice} on {item.date}
+              {item.quantity} x R{item.costPrice} on ({item.date})
             </Text>
           </View>
         )}
@@ -39,19 +39,20 @@ export default function CostRenderedList(props) {
 const styles = StyleSheet.create({
   itemName: {
     backgroundColor: "#acdfdd",
-    margin: 10,
-    fontSize: 35,
+    margin: 3,
+    fontSize: 21,
+    fontWeight: "bold",
     padding: 2,
     borderRadius: 10,
-    height: 50,
-    paddingLeft: 10,
+    height: 40,
+    paddingLeft: 8,
     flexGrow: 1,
   },
   itemInfo: {
-    margin: 3,
-    fontSize: 25,
+    // marginTop: 2,
+    fontSize: 20,
     marginLeft: 35,
-    marginBottom: 30,
+    marginBottom: 10,
   },
   row: {
     flex: 1,

@@ -32,8 +32,8 @@ export default function SecondScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F33A6A",
-    borderWidth: 2,
-    borderColor: "#ccc",
+    // borderWidth: 2,
+    // borderColor: "#ccc",
     height: "100%",
     alignItems: "center",
     paddingTop: 40,
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 4,
     minHeight: 200,
+    width: "97%",
     minWidth: "95%",
     backgroundColor: "#89CFF0",
     borderColor: "#28282B",

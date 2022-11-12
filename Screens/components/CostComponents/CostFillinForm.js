@@ -7,11 +7,11 @@ export default function CostFillinForm() {
   const [selected, setSelected] = useState("");
   const data = [
     { key: "1", value: "Blinding Shine Shampoo" },
-    { key: "2", value: "Blinding Shine Conditoner" },
+    { key: "2", value: "Blinding Shine Conditioner" },
     { key: "3", value: "Deep Moisturing Shampoo" },
-    { key: "4", value: "Deep Moisturing Conditoner" },
+    { key: "4", value: "Deep Moisturing Conditioner" },
     { key: "5", value: "Color Save Shampoo" },
-    { key: "6", value: "Color Save Conditoner" },
+    { key: "6", value: "Color Save Conditioner" },
     { key: "7", value: "Silverising Shampoo" },
     { key: "8", value: "Intensive Deep Repair Mask" },
     { key: "9", value: "Blinding Shine Definer" },
