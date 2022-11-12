@@ -13,13 +13,20 @@ export function useCostContextMethods() {
   const { setCosts } = useCostContext();
   const [form, setForm] = useState({});
 
-  // function curriedList(value) {
-  //   setForm((prev) => ({
-  //     ...prev,
-  //     name: value,
-  //   }));
-  // }
-  // }
+  function curriedList(bananas, value) {
+    return setForm((prev) => ({
+      ...prev,
+      [bananas]: value,
+    }));
+  }
+
+  function curriedList(selected) {
+    return setForm((prev) => ({
+      ...prev,
+      name: selected,
+    }));
+  }
+
   function curriedFunction(bananas) {
     return function mutate(value) {
       setForm((prev) => ({
@@ -62,37 +69,8 @@ export function useCostContextMethods() {
     curriedFunction,
     deleteCost,
     form,
-    // curriedList,
+    curriedList,
   };
-  // async function addCosts() {
-  //   const rawExistingCostData = await AsyncStorage.getItem("costData");
-  //   const existingCostData = JSON.parse(rawExistingCostData);
-
-  //   const newForm = await sendDataToServer({
-  //     ...form,
-  //     date: dateTime(),
-  //   });
-
-  //   setCosts((prev) => {
-  //     existingCostData.push(newForm);
-
-  //     return [...prev, newForm];
-  //   });
-  //   await AsyncStorage.setItem("costData", JSON.stringify(existingCostData));
-  //   setForm({});
-  // }
-
-  // async function deleteCost(id) {
-  //   const result = await deleteExpense(id);
-  //   setCosts(result);
-  // }
-
-  // return {
-  //   addCosts,
-  //   curriedFunction,
-  //   deleteCost,
-  //   form,
-  // };
 }
 
 export function CostProvider({ children }) {

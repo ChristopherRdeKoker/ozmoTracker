@@ -3,7 +3,7 @@ import { useCostContextMethods } from "../../../CostContext";
 import { SelectList } from "react-native-dropdown-select-list";
 import React, { useState } from "react";
 export default function CostFillinForm() {
-  const { curriedFunction, form, addCosts } = useCostContextMethods();
+  const { curriedFunction, form, addCosts, curriedList } = useCostContextMethods();
   const [selected, setSelected] = useState("");
   const data = [
     { key: "1", value: "Blinding Shine Shampoo" },
@@ -72,7 +72,7 @@ export default function CostFillinForm() {
           placeholder="Select Product"
           save="value"
           // //
-          onSelect={() => console.log(selected)}
+          onSelect={() => curriedList(selected.toString())}
         />
         <TextInput
           style={styles.inputNum}
