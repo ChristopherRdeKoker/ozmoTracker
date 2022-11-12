@@ -5,10 +5,6 @@ import SalesContext from "../../../SalesContext";
 import { useSalesContextMethods } from "../../../SalesContext";
 
 export default function SalesRenderedList(props) {
-  // const { salesData } = useContext(SalesContext);
-  // console.log(salesData);
-  // const [sales, setSales] = useState(props.data);
-
   const { deleteSales } = useSalesContextMethods();
   const { sales } = useContext(SalesContext);
   //////////////////////////////////////////////////////
@@ -41,18 +37,20 @@ export default function SalesRenderedList(props) {
 const styles = StyleSheet.create({
   itemName: {
     backgroundColor: "#acdfdd",
-    margin: 10,
-    fontSize: 35,
+    margin: 3,
+    fontSize: 21,
+    fontWeight: "bold",
     padding: 2,
     borderRadius: 10,
-    height: 50,
-    paddingLeft: 10,
+    height: 40,
+    paddingLeft: 8,
+    flexGrow: 1,
   },
   itemInfo: {
-    margin: 3,
-    fontSize: 25,
+    // marginTop: 2,
+    fontSize: 20,
     marginLeft: 35,
-    marginBottom: 30,
+    marginBottom: 10,
   },
   row: {
     flex: 1,
@@ -67,12 +65,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     // backgroundColor: "#fff",
+    backgroundColor: "#ADD8E6",
+
     borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#777",
     borderWidth: 1,
-    backgroundColor: "#ADD8E6",
     // marginLeft: 20,
   },
 });

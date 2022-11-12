@@ -4,7 +4,6 @@ import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from "reac
 import CostContext from "../../../CostContext";
 import { useCostContextMethods } from "../../../CostContext";
 export default function CostRenderedList(props) {
-  // const [costs, setCosts] = useState(props.data);
   const { deleteCost } = useCostContextMethods();
   const { costs } = useContext(CostContext);
 

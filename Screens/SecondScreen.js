@@ -10,8 +10,6 @@ export default function SecondScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const onOpenModal = () => setModalVisible(true);
 
-  const { addCost } = useContext(CostContext); //implemented but never used?
-
   return (
     <View style={styles.container}>
       <View style={styles.addMeButtonContainer}>
@@ -64,18 +62,5 @@ const styles = StyleSheet.create({
     borderColor: "#28282B",
     borderRadius: 10,
     marginBottom: 20,
-  },
-  clickMe: {
-    fontSize: 22,
-    borderWidth: 3,
-    borderColor: "grey",
-    paddingLeft: "10%",
-    width: "85%",
-    marginLeft: 30,
-    marginTop: 25,
-    borderRadius: 10,
-    // backgroundColor: "#A3EFAB",
-    backgroundColor: "#EFA3B5",
-    height: 70,
   },
 });
