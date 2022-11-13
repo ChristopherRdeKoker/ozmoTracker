@@ -15,6 +15,12 @@ export function useSalesContextMethods() {
   const { setSales } = useSalesContext();
   const [form, setForm] = useState({});
 
+  function curriedList2(selected) {
+    return setForm((prev) => ({
+      ...prev,
+      name: selected,
+    }));
+  }
   function curriedFunction2(oranges) {
     return function mutate(value) {
       setForm((prev) => ({
@@ -51,6 +57,7 @@ export function useSalesContextMethods() {
     curriedFunction2,
     deleteSales: handleDeleteSales,
     form, //might throw err with same name, consider "form2"
+    curriedList2,
   };
 }
 

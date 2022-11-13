@@ -13,13 +13,6 @@ export function useCostContextMethods() {
   const { setCosts } = useCostContext();
   const [form, setForm] = useState({});
 
-  function curriedList(bananas, value) {
-    return setForm((prev) => ({
-      ...prev,
-      [bananas]: value,
-    }));
-  }
-
   function curriedList(selected) {
     return setForm((prev) => ({
       ...prev,

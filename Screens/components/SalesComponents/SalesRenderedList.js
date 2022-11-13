@@ -25,7 +25,7 @@ export default function SalesRenderedList(props) {
               </TouchableOpacity>
             </View>
             <Text style={styles.itemInfo}>
-              {item.quantity}x R{item.salePrice} on {item.date}
+              {item.quantity}x R{item.salePrice} on ({item.date})
             </Text>
           </View>
         )}

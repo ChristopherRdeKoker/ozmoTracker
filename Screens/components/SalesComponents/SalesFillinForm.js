@@ -1,17 +1,78 @@
 import { StyleSheet, TouchableOpacity, Text, View, TextInput } from "react-native";
 import { useSalesContextMethods } from "../../../SalesContext";
+import { SelectList } from "react-native-dropdown-select-list";
+import React, { useState } from "react";
 export default function SalesFillinForm() {
-  const { curriedFunction2, form, addSales } = useSalesContextMethods();
+  const { curriedFunction2, form, addSales, curriedList2 } = useSalesContextMethods();
+  const [selected, setSelected] = useState("");
+  const data = [
+    { key: "1", value: "Blinding Shine Shampoo" },
+    { key: "2", value: "Blinding Shine Conditioner" },
+    { key: "3", value: "Deep Moisturing Shampoo" },
+    { key: "4", value: "Deep Moisturing Conditioner" },
+    { key: "5", value: "Color Save Shampoo" },
+    { key: "6", value: "Color Save Conditioner" },
+    { key: "7", value: "Silverising Shampoo" },
+    { key: "8", value: "Intensive Deep Repair Mask" },
+    { key: "9", value: "Blinding Shine Definer" },
+  ];
+
+  const boxStyle = {
+    // backgroundColor: "red",
+    fontSize: 20,
+    // borderWidth: 1,
+    // borderColor: "#fff",
+    width: "80%",
+    marginLeft: 40,
+    margin: 25,
+    backgroundColor: "#a8e4a0",
+    height: 60,
+    borderRadius: 5,
+    marginTop: 100,
+    paddingLeft: 55,
+  };
+  const dropdownList = {
+    fontSize: 20,
+  };
 
   return (
     <View>
       <View style={styles.container}>
-        <TextInput
+        {/* <TextInput
           style={styles.inputText}
           placeholder="Type product name here"
           onChangeText={curriedFunction2("name")}
           value={form["name"]}
-        ></TextInput>
+        ></TextInput> */}
+        <SelectList
+          boxStyles={boxStyle}
+          inputStyles={dropdownList}
+          //
+          dropdownStyles={{
+            backgroundColor: "white",
+            marginHorizontal: 15,
+            borderRadius: 10,
+            backgroundColor: "#99e599",
+
+            // borderWidth: 1,
+            // borderColor: "red",
+          }}
+          dropdownItemStyles={{
+            marginHorizontal: 10,
+            marginBottom: 8,
+            backgroundColor: "white",
+            borderRadius: 10,
+          }}
+          dropdownTextStyles={{ fontSize: 20, color: "#696969" }}
+          maxHeight={300}
+          ////////////////////////////////////////////////////////////////////////////////////
+          setSelected={setSelected}
+          data={data}
+          placeholder="Select Product"
+          save="value"
+          // //
+          onSelect={() => curriedList2(selected.toString())}
+        />
         <TextInput
           style={styles.inputNum}
           placeholder="Price Sold (ZAR)"
@@ -80,8 +141,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 35,
     paddingTop: 15,
-    // backgroundColor: "#A3EFAB",
-    backgroundColor: "#EFA3B5",
+    backgroundColor: "#A3EFAB",
+    // backgroundColor: "#EFA3B5",
     height: 70,
     alignItems: "center",
     justifyContent: "center",

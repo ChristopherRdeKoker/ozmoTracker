@@ -13,6 +13,10 @@ export default function HomePage({ navigation }) {
   const clickMeThird = () => {
     navigation.navigate("Third");
   };
+
+  const clickMeFourth = () => {
+    navigation.navigate("Fourth");
+  };
   ///// DataState
 
   /////////////////////////////////////////////////
@@ -23,7 +27,7 @@ export default function HomePage({ navigation }) {
         <CostButton click={clickMeSecond} />
       </View>
       <SalesButton click={clickMeThird} />
-      <InventoryButton />
+      <InventoryButton click={clickMeFourth} />
     </View>
   );
 }
