@@ -1,6 +1,34 @@
 import { StyleSheet, TouchableOpacity, Text, View, FlatList } from "react-native";
+import { useCostContext } from "../../../CostContext";
+import { useSalesContext } from "../../../SalesContext";
+import { joinArrays } from "../../../utils";
 export default function InventoryTable() {
-  // const data = ["Blinding Shine Shampoo", "Silverising Shampoo"];
+  const { costs } = useCostContext();
+  const { sales } = useSalesContext();
+  // console.log(costs);
+  // console.log(`-------`);
+  // console.log(sales);
+
+  // function addCosts(names, costs) {
+  //   const totalCosts =
+  //   return costArray.push(totalCosts)
+  // }
+
+  const names = [
+    "Blinding Shine Shampoo",
+    "Blinding Shine Conditioner",
+    "Deep Moisturing Shampoo",
+    "Deep Moisturing Conditioner",
+    "Color Save Shampoo",
+    "Color Save Conditioner",
+    "Silverising Shampoo",
+    "Intensive Deep Repair Mask",
+    "Blinding Shine Definer",
+  ];
+
+  joinArrays(names[8], costs);
+
+  //////////////////////////////////////
   const data = [
     //temp data
     { key: "Blinding Shine Shampoo", value: 2 },

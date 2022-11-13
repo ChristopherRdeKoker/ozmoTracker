@@ -6,3 +6,10 @@ export const dateTime = function () {
   const date = `${year}-${month}-${day}`;
   return date.toString();
 };
+
+export const joinArrays = function (namesArr, items) {
+  const newArr = items.filter((el) => {
+    return el.name == namesArr;
+  });
+  return console.log(newArr);
+};
