@@ -2,17 +2,10 @@ import { StyleSheet, TouchableOpacity, Text, View, FlatList } from "react-native
 import { useCostContext } from "../../../CostContext";
 import { useSalesContext } from "../../../SalesContext";
 import { joinArrays } from "../../../utils";
+import { addCostsReduce } from "../../../utils";
 export default function InventoryTable() {
   const { costs } = useCostContext();
   const { sales } = useSalesContext();
-  // console.log(costs);
-  // console.log(`-------`);
-  // console.log(sales);
-
-  // function addCosts(names, costs) {
-  //   const totalCosts =
-  //   return costArray.push(totalCosts)
-  // }
 
   const names = [
     "Blinding Shine Shampoo",
@@ -26,8 +19,15 @@ export default function InventoryTable() {
     "Blinding Shine Definer",
   ];
 
-  joinArrays(names[8], costs);
+  // const x = joinArrays(names[0], costs);
+  // console.log(x);
+  // const costs1BBS = addCostsReduce(x);
+  // console.log(costs1BBS);  //works niiiiice
 
+  const x = joinArrays(names[8], costs);
+  // console.log(x);
+  const costs1BBS = addCostsReduce(x);
+  console.log(costs1BBS); //works niiiiice
   //////////////////////////////////////
   const data = [
     //temp data
