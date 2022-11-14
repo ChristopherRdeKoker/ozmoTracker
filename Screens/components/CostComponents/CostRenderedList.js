@@ -26,7 +26,7 @@ export default function CostRenderedList(props) {
               </TouchableOpacity>
             </View>
             <Text style={styles.itemInfo}>
-              {item.quantity} x R{item.costPrice} on ({item.date})
+              {item.quantity} x R{item.costPrice ?? 0} on ({item.date})
             </Text>
           </View>
         )}

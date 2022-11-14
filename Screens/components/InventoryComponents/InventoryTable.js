@@ -1,10 +1,14 @@
 import { StyleSheet, TouchableOpacity, Text, View, FlatList } from "react-native";
+import { ForceTouchGestureHandler } from "react-native-gesture-handler";
 import { useCostContext } from "../../../CostContext";
 import { useSalesContext } from "../../../SalesContext";
-import { joinArrays } from "../../../utils";
-import { addCostsReduce } from "../../../utils";
+
+import { filterArrays } from "../../../utils";
+import { addCostsReduceArr } from "../../../utils";
+import { addSalesReduceArr } from "../../../utils";
+
 export default function InventoryTable() {
-  const { costs } = useCostContext();
+  const { costs } = useCostContext(); //iterate by name then reduce to add numbers
   const { sales } = useSalesContext();
 
   const names = [
@@ -19,39 +23,34 @@ export default function InventoryTable() {
     "Blinding Shine Definer",
   ];
 
-  // const x = joinArrays(names[0], costs);
-  // console.log(x);
-  // const costs1BBS = addCostsReduce(x);
-  // console.log(costs1BBS);  //works niiiiice
+  const inventory = Object.fromEntries(names.sort((a, b) => a.localeCompare(b)).map((i) => [i, 0]));
 
-  const x = joinArrays(names[8], costs);
-  // console.log(x);
-  const costs1BBS = addCostsReduce(x);
-  console.log(costs1BBS); //works niiiiice
-  //////////////////////////////////////
-  const data = [
-    //temp data
-    { key: "Blinding Shine Shampoo", value: 2 },
-    { key: "Blinding Shine Conditioner", value: 5 },
-    { key: "Deep Moisturing Shampoo", value: 6 },
-    { key: "Deep Moisturing Conditioner", value: 1 },
-    { key: "Color Save Shampoo", value: 2 },
-    { key: "Color Save Conditioner", value: 4 },
-    { key: "Silverising Shampoo", value: 2 },
-    { key: "Intensive Deep Repair Mask", value: 1 },
-    { key: "Blinding Shine Definer", value: 7 },
-  ];
+  costs.forEach(({ name, quantity }) => {
+    inventory[name] = +inventory[name] + +quantity;
+  });
+
+  sales.forEach(({ name, quantity }) => {
+    inventory[name] = +inventory[name] - +quantity;
+  });
+  /// Object.fromEntries pairs with Object.entries
+
+  const nameData = Object.entries(inventory).map(([k, v]) => {
+    return { key: k, value: +v };
+  });
+
   return (
     <View style={styles.main}>
       <View style={styles.table}>
         <FlatList
-          data={data}
-          renderItem={({ item }) => (
-            <View style={styles.row}>
-              <Text style={styles.key}>{item.key}</Text>
-              <Text style={styles.value}>{item.value}</Text>
-            </View>
-          )}
+          data={nameData}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.row}>
+                <Text style={styles.key}>{item.key}</Text>
+                <Text style={styles.value}>{item.value}</Text>
+              </View>
+            );
+          }}
         />
       </View>
     </View>
