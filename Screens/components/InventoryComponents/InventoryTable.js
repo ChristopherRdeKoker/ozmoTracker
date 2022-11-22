@@ -3,9 +3,9 @@ import { ForceTouchGestureHandler } from "react-native-gesture-handler";
 import { useCostContext } from "../../../CostContext";
 import { useSalesContext } from "../../../SalesContext";
 
-import { filterArrays } from "../../../utils";
-import { addCostsReduceArr } from "../../../utils";
-import { addSalesReduceArr } from "../../../utils";
+// import { filterArrays } from "../../../utils";
+// import { addCostsReduceArr } from "../../../utils";
+// import { addSalesReduceArr } from "../../../utils";
 
 export default function InventoryTable() {
   const { costs } = useCostContext(); //iterate by name then reduce to add numbers

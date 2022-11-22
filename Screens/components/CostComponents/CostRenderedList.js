@@ -1,13 +1,26 @@
-import { useContext } from "react";
+import { useContext, useCallback, useState } from "react";
 import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from "react-native";
 // import { TouchableOpacity } from "react-native-gesture-handler";
 import CostContext from "../../../CostContext";
 import { useCostContextMethods } from "../../../CostContext";
-export default function CostRenderedList(props) {
+// import { deleteExpense } from "../../../CostContext";
+export default function CostRenderedList() {
   const { deleteCost } = useCostContextMethods();
   const { costs } = useContext(CostContext);
+  // console.log(costs);
 
+  // const [, updateState] = useState();
+  // const forceUpdate = useCallback(() => updateState({}), []);
+
+  // const newDelfunc = function (id) {
+  //   deleteCost(id);
+  //   // forceUpdate();
+  // };
   ////⭐ finish delete process
+  // const deleteCost = async function (id) {
+  //   const results = await deleteExpense(id);
+  //   return setCosts(results);
+  // };
   //////////////////////////////////////////////////////
 
   return (
